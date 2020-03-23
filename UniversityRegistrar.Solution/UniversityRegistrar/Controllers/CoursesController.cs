@@ -16,56 +16,52 @@ namespace UniversityRegistrar.Controllers
       _db = db;
     }
 
-    // public ActionResult Index()
-    // {
-    //   return View(_db.Items.ToList());
-    // }
+    public ActionResult Index()
+    {
+      return View(_db.Courses.ToList());
+    }
+    
+    public ActionResult Details(int id)
+    {
+      Course thiCourse = _db.Courses
+              .Include(course => course.Students)
+              .ThenInclude(join =>join.Student)
+              .FirstOrDefault(course => course.CourseId == id);
+      return View(thiCourse);
+    }
 
+    public ActionResult Create()
+    {
+      // ViewBag.StudentId = new SelectList(_db.Students, "StudentId", "LastName");
+      return View();
+    }
 
-    // public ActionResult Details(int id)
-    // {
-    //   var thisItem = _db.Items
-    //       .Include(item => item.Categories)
-    //       .ThenInclude(join => join.Category)
-    //       .FirstOrDefault(item => item.ItemId == id);
-    //   return View(thisItem);
-    // }
+    [HttpPost]
+    public ActionResult Create(Course course)
+    {
+      _db.Courses.Add(course);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
-    //  public ActionResult Create()
-    // {
-    //   ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
-    //   return View();
-    // }
+    public ActionResult Edit(int id)
+    {
+      var thisCourse = _db.Courses.FirstOrDefault(courses => courses.CourseId == id);
+      // ViewBag.StudentId = new SelectList(_db.Students, "StudentId", "LastName");
+      return View(thisCourse);
+    }
 
-    // [HttpPost]
-    // public ActionResult Create(Item item, int CategoryId)
-    // {
-    //   _db.Items.Add(item);
-    //   if (CategoryId != 0)
-    //   {
-    //     _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
-    //   }
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
-
-    // public ActionResult AddCategory(int id)
-    // {
-    //   var thisItem = _db.Items.FirstOrDefault(items => items.ItemId == id);
-    //   ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
-    //   return View(thisItem);
-    // }
-
-    // [HttpPost]
-    // public ActionResult AddCategory(Item item, int CategoryId)
-    // {
-    //   if (CategoryId != 0)
-    //   {
-    //     _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
-    //   }
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public ActionResult Edit(Course course)
+    {
+      // if (StudentId != 0)
+      // {
+      //   _db.CourseStudents.Add(new CourseStudent { StudentId = StudentId, CourseId = course.CourseId });
+      // }
+      _db.Entry(course).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
   }
 }

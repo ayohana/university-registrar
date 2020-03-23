@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+  ViewBag.Title = "Course Details";
+}
+
+@model UniversityRegistrar.Models.Course;
+
+<div class="courseDetails">
+  <h1><strong>Course Details</strong></h1>
+  <h3>Course Name : @Html.DisplayFor(model => model.CourseName)</h3>
+
+  @if(@Model.Students.Count == 0)
+  {
+    <p>No students hasn't registered this class.</p>
+  }
+  else
+  {
+    <p>Students who has enrolled this course:</p>
+    @foreach(var join in Model.Students)
+    {
+      <p>@join.Student.FirstName @join.Student.LastName : @join.Student.StudentId</p>
+    }
+  }
+
+  <p>@Html.ActionLink("Back to list", "Index")</p>
+  <p>@Html.ActionLink("Edit Course", "Edit", new { id = Model.CourseId })</p>
+  <p>@Html.ActionLink("Delete Course", "Delete", new { id = Model.CourseId })</p>
+</div>

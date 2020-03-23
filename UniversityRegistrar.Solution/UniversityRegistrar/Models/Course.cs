@@ -8,11 +8,11 @@ namespace UniversityRegistrar.Models
     public int CourseId { get; set; }
     public string CourseName { get; set; }
     public int CourseNumber { get; set; }
-    public ICollection<CourseStudent> CourseStudents { get; set; }
+    public ICollection<CourseStudent> Students { get; set; }
 
     public Course()
     {
-      this.CourseStudents = new HashSet<CourseStudent>();
+      this.Students = new HashSet<CourseStudent>();
     }
 
   }

@@ -1,19 +1,22 @@
 @{
   Layout = "_Layout";
-  ViewBag.Title = "";
+  ViewBag.Title = "Add a Course";
 }
 
-@model UniversityRegistrar.Models.Course
+@model UniversityRegistrar.Models.Course;
 
-@* <h4>Add a new task</h4>
+<h4>Add New Course</h4>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Description)
-  @Html.TextBoxFor(model => model.Description)
+  @Html.LabelFor(model => model.CourseName)
+  @Html.TextBoxFor(model => model.CourseName)
 
-  @Html.Label("Select category")
-  @Html.DropDownList("CategoryId")
+  @Html.LabelFor(model => model.CourseNumber)
+  @Html.TextBoxFor(model => model.CourseNumber)
 
-  <input type="submit" value="Add new item" class="btn btn-default" />
+  @* @Html.Label("Select Student")
+  @Html.DropDownList("StudentId") *@
+
+  <input type="submit" value="Add new course" class="btn btn-default" />
 }
-<p>@Html.ActionLink("Show all items", "Index")</p> *@
+<p>@Html.ActionLink("Show all courses", "Index")</p>
