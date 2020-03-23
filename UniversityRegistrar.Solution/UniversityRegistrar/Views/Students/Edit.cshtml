@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+  ViewBag.Title = "Update Student Info";
+}
+
+@model UniversityRegistrar.Models.Student;
+
+<h1>Update Student Info</h1>
+
+<div class="StudentEdit">
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.StudentId)
+
+    @Html.LabelFor(model => model.FirstName)
+    @Html.EditorFor(model => model.FirstName)
+
+    @Html.LabelFor(model => model.LastName)
+    @Html.EditorFor(model => model.LastName)
+
+    @Html.Label("Select Course")
+    @Html.DropDownList("CourseId")
+
+    <input type="submit" value="Save" />
+  }
+</div>
+
+<p>@Html.ActionLink("Back to List", "Index")</p>

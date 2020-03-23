@@ -1,0 +1,31 @@
+@{
+  Layout = "_Layout";
+  ViewBag.Title = "Student Details";
+}
+
+@model UniversityRegistrar.Models.Student;
+
+<div class="StudentDetails">
+  <h1><strong>Student Details</strong></h1>
+  
+  <p>Name : @Model.FirstName @Model.LastName</p>
+  <p>ID : @Model.StudentId</p>
+  <p>DOB : @Model.DOB.Month/@Model.DOB.Day/@Model.DOB.Year</p>
+  @if (Model.Courses.Count == 0)
+  {
+    <p>This student is not enrolled any classes yet.</p>
+  }
+  else
+  {
+    @foreach(var join in Model.Courses)
+    {
+      <p>@join.Course.CourseName</p>
+    }
+  }
+  
+</div>
+
+<p>@Html.ActionLink("Back to Lists", "Index")</p>
+<p>@Html.ActionLink("Add Course for This Student", "AddCourse", new { id = Model.StudentId })</p>
+<p>@Html.ActionLink("Edit this information", "Edit")</p>
+<p>@Html.ActionLink("Delete this information", "Delete")</p>

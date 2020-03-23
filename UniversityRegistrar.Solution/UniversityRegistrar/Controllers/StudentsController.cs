@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using UniversityRegistrar.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 
 namespace UniversityRegistrar.Controllers
@@ -15,49 +16,76 @@ namespace UniversityRegistrar.Controllers
       _db = db;
     }
 
-    // public ActionResult Index()
-    // {
-    //   List<Category> model = _db.Categories.ToList();
-    //   return View(model);
-    // }
+    public ActionResult Index()
+    {
+      return View(_db.Students.ToList());
+    }
 
-    // public ActionResult Create()
-    // {
-    //   return View();
-    // }
+    public ActionResult Create()
+    {
+      ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "CourseName");
+      return View();
+    }
 
-    // [HttpPost]
-    // public ActionResult Create(Category category)
-    // {
-    //   _db.Categories.Add(category);
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public ActionResult Create(Student student, int CourseId)
+    {
+      _db.Students.Add(student);
+      if (CourseId != 0)
+      {
+        _db.CourseStudents.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId});
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
-    // public ActionResult Details(int id)
-    // {
-    //   var thisCategory = _db.Categories
-    //       .Include(category => category.Items)
-    //       .ThenInclude(join => join.Item)
-    //       .FirstOrDefault(category => category.CategoryId == id);
-    //   return View(thisCategory);
-    // }
+    public ActionResult Details(int id)
+    {
+      var thisStudent = _db.Students
+          .Include(student => student.Courses)
+          .ThenInclude(join => join.Course)
+          .FirstOrDefault(student => student.StudentId == id);
+      return View(thisStudent);
+    }
 
-    // public ActionResult Edit(int id)
-    // {
-    //   var thisCategory = _db.Categories.FirstOrDefault(category => category.CategoryId == id);
-    //   return View(thisCategory);
-    // }
+    public ActionResult Edit(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
+      ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "CourseName");
+      return View(thisStudent);
+    }
 
-    // [HttpPost]
-    // public ActionResult Edit(Category category)
-    // {
-    //   _db.Entry(category).State = EntityState.Modified;
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public ActionResult Edit(Student student, int courseId)
+    {
+      if(courseId != 0)
+      {
+        _db.CourseStudents.Add(new CourseStudent() { CourseId = courseId, StudentId = student.StudentId});
+      }
+      _db.Entry(student).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
-    // public ActionResult Delete(int id)
+    public ActionResult AddCourse(int id)
+    {
+      Student thisStudent = _db.Students.FirstOrDefault(students => students.StudentId == id);
+      ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "CourseName");
+      return View(thisStudent);
+    }
+
+    [HttpPost]
+    public ActionResult AddCourse(Student student, int CourseId)
+    {
+      if (CourseId != 0)
+      {
+        _db.CourseStudents.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    // public ActionResult Delete(int id) 
     // {
     //   var thisCategory = _db.Categories.FirstOrDefault(category => category.CategoryId == id);
     //   return View(thisCategory);
