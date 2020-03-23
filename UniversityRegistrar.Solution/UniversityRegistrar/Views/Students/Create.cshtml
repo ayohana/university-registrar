@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+  ViewBag.Title = "Add Student";
+}
+
+@model UniversityRegistrar.Models.Student
+
+<h4>Add a Student</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.FirstName)
+  @Html.TextBoxFor(model => model.FirstName)
+
+  @Html.LabelFor(model => model.LastName)
+  @Html.TextBoxFor(model => model.LastName)
+
+  @Html.Label("Select course")
+  @Html.DropDownList("CourseId")
+
+  <input type="submit" value="Add New Student" class="btn btn-default" />
+}
+
+<p>@Html.ActionLink("Back to All Students", "Index")</p>
