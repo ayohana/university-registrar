@@ -1,8 +1,12 @@
-# [Project Name](https://github.com/ayohana/ProjectName.git/)
+# University Registrar
 
-#### C# Basic Web Applications Exercise for [Epicodus](https://www.epicodus.com/), 03.20.2020
+#### C# Basic Web Applications Exercise for [Epicodus](https://www.epicodus.com/), 03.23.2020
 
-#### By [**Adela Darmansyah**](https://ayohana.github.io/portfolio/)
+#### By **Jiwon Han and Adela Darmansyah**
+
+## Pair Program WFH Summary
+
+* University Registrar Project
 
 ## Description
 
@@ -10,27 +14,18 @@
 
 ## User Stories
 
-* As a ..., I want to be able to ... so that ...
-
-## Specs
-
-<details>
-  <summary>Click to expand!</summary>
-
-| Spec | `Console` Input | `Console` Output |
-| :-------------     | :------------- | :------------- |
-| **Test** | input | output |
-
-</details>
+* As a registrar, I want to enter a student, so I can keep track of all students enrolled at this University. I should be able to provide a name and date of enrollment.
+* As a registrar, I want to enter a course, so I can keep track of all of the courses the University offers. I should be able to provide a course name and a course number (ex. HIST100).
+* As a registrar, I want to be able to assign students to a course, so that teachers know which students are in their course. A course can have many students and a student can take many courses at the same time.
 
 ## Setup/Installation Requirements
 
 * Download [.NET Core](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-c-and-net) (Mac/Windows OS) - _FREE!_
 * Download [MySQL](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql) (Mac/Windows OS) - _FREE!_
-* Clone this [repository](https://github.com/ayohana/ProjectName.git/)
+* Clone this repository
   * Open the `Command Line Interface`.
   * Enter `$ cd Desktop` to navigate into your Desktop (or anywhere you'd like to save this repo into).
-  * Enter `$ git clone https://github.com/ayohana/ProjectName.git/`.
+  * Enter `$ git clone https://github.com/ayohana/university-registrar.git/`.
 * Create your database.
   * Open the `Command Line Interface` (CLI).
   * Enter `mysql -uroot -p` and the CLI will prompt for your MYSQL password.
@@ -52,7 +47,7 @@ No known bugs at this time.
 
 ## Support and contact details
 
-Feel free to provide feedback via email: adela.yohana@gmail.com.
+Feel free to provide feedback via email: adela.yohana@gmail.com or jiwon1.han@gmail.com.
 
 ## Technologies Used
 
@@ -66,4 +61,4 @@ Feel free to provide feedback via email: adela.yohana@gmail.com.
 
 This C# console application is licensed under the MIT license.
 
-Copyright (c) 2020 **Adela Darmansyah**
+Copyright (c) 2020 **Jiwon Han and Adela Darmansyah**

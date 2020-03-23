@@ -1,17 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ProjectName.Models;
+using UniversityRegistrar.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProjectName.Controllers
+namespace UniversityRegistrar.Controllers
 {
-  public class ClassesNameController : Controller
+  public class CoursesController : Controller
   {
-    private readonly ProjectNameContext _db;
+    private readonly UniversityRegistrarContext _db;
 
-    public ClassesNameController(ProjectNameContext db)
+    public CoursesController(UniversityRegistrarContext db)
     {
       _db = db;
     }
