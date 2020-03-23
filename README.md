@@ -7,6 +7,7 @@
 ## Pair Program WFH Summary
 
 * University Registrar Project
+* Doctor's Offce Project
 
 ## Description
 
@@ -17,29 +18,6 @@
 * As a registrar, I want to enter a student, so I can keep track of all students enrolled at this University. I should be able to provide a name and date of enrollment.
 * As a registrar, I want to enter a course, so I can keep track of all of the courses the University offers. I should be able to provide a course name and a course number (ex. HIST100).
 * As a registrar, I want to be able to assign students to a course, so that teachers know which students are in their course. A course can have many students and a student can take many courses at the same time.
-
-## Setup/Installation Requirements
-
-* Download [.NET Core](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-c-and-net) (Mac/Windows OS) - _FREE!_
-* Download [MySQL](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql) (Mac/Windows OS) - _FREE!_
-* Clone this repository
-  * Open the `Command Line Interface`.
-  * Enter `$ cd Desktop` to navigate into your Desktop (or anywhere you'd like to save this repo into).
-  * Enter `$ git clone https://github.com/ayohana/university-registrar.git/`.
-* Create your database.
-  * Open the `Command Line Interface` (CLI).
-  * Enter `mysql -uroot -p` and the CLI will prompt for your MYSQL password.
-  * Enter `CREATE DATABASE database_name;`
-  * Enter `SHOW DATABASES;` to confirm your database was created in your server's list of databases.
-  * Enter `USE database_name;` to connect to your database.
-  * Enter `SELECT DATABASE();` to verify you are connected to the correct database.
-  * Enter `CREATE TABLE stylists (StylistID serial PRIMARY KEY, Name VARCHAR (255), Specialty VARCHAR (255), HireDate DATETIME);` to create your table of stylists.
-  * Enter `CREATE TABLE clients (ClientID serial PRIMARY KEY, Name VARCHAR(255), StylistID INT);` to create your table of clients.
-  * Enter `DESCRIBE stylists;` or `DESCRIBE clients` to see your table columns.
-* Run the application.
-  * Navigate into the `ProjectName` directory `$ cd Desktop/ProjectName/ProjectName.Solution/ProjectName`
-    * Enter the command `dotnet restore` to gather tools and dependencies for the application.
-    * Enter `dotnet run` to run the application.
 
 ## Known Bugs
 
