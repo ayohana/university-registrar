@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+  ViewBag.Title = "Delete a Student";
+}
+
+@model UniversityRegistrar.Models.Student
+
+<h1>Delete Student</h1>
+
+<p>Student Name: @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</p>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+@Html.ActionLink("Back to All Students", "Index")

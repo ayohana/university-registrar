@@ -28,4 +28,4 @@
 <p>@Html.ActionLink("Back to Lists", "Index")</p>
 <p>@Html.ActionLink("Add Course for This Student", "AddCourse", new { id = Model.StudentId })</p>
 <p>@Html.ActionLink("Edit this information", "Edit")</p>
-<p>@Html.ActionLink("Delete this information", "Delete")</p>
+<p>@Html.ActionLink("Delete this information", "Delete", new { id = Model.StudentId })</p>
